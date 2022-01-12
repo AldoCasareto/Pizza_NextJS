@@ -19,7 +19,7 @@
 }
 
 .item:last-child {
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .callButton {
@@ -29,6 +29,9 @@
   cursor: pointer;
   height: 50px;
   width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .texts {

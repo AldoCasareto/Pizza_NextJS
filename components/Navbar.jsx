@@ -17,14 +17,14 @@ const Navbar = () => {
         <div className={styles.callButton}>
           <Image
             src="/img/telephone.png"
-            alt="call now"
+            alt=""
             width="32"
             height="32"
           />
         </div>
         <div className={styles.texts}>
           <div className={styles.text}>Order Now</div>
-          <div className={styles.text}>+1-800-123-4567</div>
+          <div className={styles.text}>800-123-4567</div>
         </div>
       </div>
       <div className={styles.item}>
