@@ -2,17 +2,24 @@ import styles from "../styles/Cart.module.css";
 import Image from "next/image";
 
 const Cart = () => {
+  const tableHeaders = [
+    "Product",
+    "Name",
+    "Extras",
+    "Price",
+    "Quantity",
+    "Total",
+  ];
   return (
     <div className={styles.container}>
       <div className={styles.left}>
         <table className={styles.table}>
           <tr className={styles.trTitle}>
-            <th>Product</th>
-            <th>Name</th>
-            <th>Extras</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
+            {tableHeaders.map((header, index) => (
+              <th key={index} className={styles.th}>
+                {header}
+              </th>
+            ))}
           </tr>
           <tr className={styles.tr}>
             <td>
