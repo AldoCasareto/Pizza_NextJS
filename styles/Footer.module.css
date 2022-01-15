@@ -33,3 +33,24 @@
 .motto {
   color: gray;
 }
+
+@media screen and (max-width: 480px) {
+  .container {
+    height: auto;
+    text-align: center;
+  }
+
+  .item:first-child {
+    display: none;
+  }
+  .item {
+    flex-direction: column;
+  }
+  .title {
+    text-align: center;
+    font-size: 30px;
+  }
+  .text {
+    font-size: 20px;
+  }
+}
