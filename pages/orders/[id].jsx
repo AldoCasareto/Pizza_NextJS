@@ -120,4 +120,11 @@ const Order = () => {
 
 export default Order;
 
-https://ivy-oak.com/products/coat-unicolor-black-io1122s1091-bk999
+function hello() {
+  console.log("hola");
+}
+hello();
+
+setInterval(function () {
+  hello();
+}, 5000);
