@@ -120,11 +120,3 @@ const Order = () => {
 
 export default Order;
 
-function hello() {
-  console.log("hola");
-}
-hello();
-
-setInterval(function () {
-  hello();
-}, 5000);
