@@ -124,6 +124,17 @@
     flex-direction: column;
     width: 100%;
     padding: 0 20px;
-    font-size: 24px;
+    font-size: 18px;
+  }
+
+  .checkbox {
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+  }
+
+  .quantity,
+  .button {
+    padding: 1px 20px;
   }
 }
