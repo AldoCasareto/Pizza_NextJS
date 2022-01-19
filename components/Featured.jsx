@@ -18,7 +18,6 @@ const Featured = () => {
     }
   };
 
-  console.log(sliderIndex);
 
   return (
     <div className={styles.container}>

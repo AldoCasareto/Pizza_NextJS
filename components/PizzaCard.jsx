@@ -4,14 +4,14 @@ import Link from "next/link";
 
 const PizzaCard = ({ pizza }) => {
   return (
-    <Link href={`/product/${pizza._id}`} passHref>
-      <div className={styles.container}>
+    <div className={styles.container}>
+      <Link href={`/product/${pizza._id}`} passHref>
         <Image src={pizza.imageUrl} alt="" width="500" height="500" />
-        <h1 className={styles.title}>{pizza.title}</h1>
-        <span className={styles.price}>{pizza.price[0]}</span>
-        <p className={styles.description}>{pizza.description}</p>
-      </div>
-    </Link>
+      </Link>
+      <h1 className={styles.title}>{pizza.title}</h1>
+      <span className={styles.price}>${pizza.price[0]}</span>
+      <p className={styles.desc}>{pizza.description}</p>
+    </div>
   );
 };
 
