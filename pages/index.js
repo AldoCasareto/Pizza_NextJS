@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import axios from "axios";
 
 export default function Home({ pizzaList }) {
+  console.log(pizzaList);
   return (
     <div className={styles.container}>
       <Head>
@@ -19,7 +20,7 @@ export default function Home({ pizzaList }) {
 }
 
 export const getServerSideProps = async () => {
-  const res = await axios.get("http://localhost:3001/api/products");
+  const res = await axios.get("http://localhost:3000/api/products");
   return {
     props: {
       pizzaList: res.data,
