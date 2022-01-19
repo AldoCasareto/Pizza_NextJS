@@ -10,7 +10,12 @@ const Product = ({ pizza }) => {
     <div className={styles.container}>
       <div className={styles.left}>
         <div className={styles.imgContainer}>
-          <Image src={pizza.img} objectFit="contain" layout="fill" alt="" />
+          <Image
+            src={pizza.imageUrl}
+            objectFit="contain"
+            layout="fill"
+            alt=""
+          />
         </div>
       </div>
       <div className={styles.right}>
@@ -81,7 +86,9 @@ const Product = ({ pizza }) => {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(`http://localhost:3000/product/${params.id}`);
+  const res = await axios.get(
+    `http://localhost:3000/api/products/${params.id}`
+  );
   return {
     props: {
       pizza: res.data,
