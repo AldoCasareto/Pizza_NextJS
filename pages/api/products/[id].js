@@ -17,4 +17,24 @@ export default async function handler(req, res) {
       res.status(500).json(err);
     }
   }
+
+  if (method === "PUT") {
+    try {
+      const product = await Product.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
+      res.status(200).json(product);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+
+  if (method === "DELETE") {
+    try {
+      const product = await Product.findByIdAndDelete(id);
+      res.status(200).json(product);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
 }

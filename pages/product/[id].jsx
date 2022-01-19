@@ -5,6 +5,30 @@ import axios from "axios";
 
 const Product = ({ pizza }) => {
   const [size, setSize] = useState(0);
+  const [price, setPrice] = useState(pizza.price[0]);
+  const [extras, setExtras] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+
+  const changePrice = (number) => {
+    setPrice(price + number);
+  };
+
+  const handleSize = (sizeIndex) => {
+    const difference = pizza.price[sizeIndex] - pizza.price[size];
+    setSize(sizeIndex);
+    changePrice(difference);
+  };
+
+  const handleChange = (e, option) => {
+    const checked = e.target.checked;
+    if (checked) {
+      changePrice(option.price);
+      setExtras([...extras, option]);
+    } else {
+      changePrice(-option.price);
+      setExtras(extras.filter((extra) => extra.id !== option._id));
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -20,64 +44,45 @@ const Product = ({ pizza }) => {
       </div>
       <div className={styles.right}>
         <h1 className={styles.title}>{pizza.title}</h1>
-        <span className={styles.price}>${pizza.price[size]}</span>
+        <span className={styles.price}>${price}</span>
         <p className={styles.desc}>{pizza.description}</p>
         <h3 className={styles.choose}>Choose the size</h3>
         <div className={styles.sizes}>
-          <div className={styles.size} onClick={() => setSize(0)}>
+          <div className={styles.size} onClick={() => handleSize(0)}>
             <Image src="/img/size.png" layout="fill" alt="" />
             <span className={styles.number}>Small</span>
           </div>
-          <div className={styles.size} onClick={() => setSize(1)}>
+          <div className={styles.size} onClick={() => handleSize(1)}>
             <Image src="/img/size.png" layout="fill" alt="" />
             <span className={styles.number}>Medium</span>
           </div>
-          <div className={styles.size} onClick={() => setSize(2)}>
+          <div className={styles.size} onClick={() => handleSize(2)}>
             <Image src="/img/size.png" layout="fill" alt="" />
             <span className={styles.number}>Large</span>
           </div>
         </div>
         <h3 className={styles.choose}>Choose additional ingredients</h3>
         <div className={styles.ingredients}>
-          <div className={styles.option}>
-            <input
-              type="checkbox"
-              id="double"
-              name="double"
-              className={styles.checkbox}
-            />
-            <label htmlFor="double">Double Ingredients</label>
-          </div>
-          <div className={styles.option}>
-            <input
-              className={styles.checkbox}
-              type="checkbox"
-              id="cheese"
-              name="cheese"
-            />
-            <label htmlFor="cheese">Extra Cheese</label>
-          </div>
-          <div className={styles.option}>
-            <input
-              className={styles.checkbox}
-              type="checkbox"
-              id="spicy"
-              name="spicy"
-            />
-            <label htmlFor="spicy">Spicy Sauce</label>
-          </div>
-          <div className={styles.option}>
-            <input
-              className={styles.checkbox}
-              type="checkbox"
-              id="garlic"
-              name="garlic"
-            />
-            <label htmlFor="garlic">Garlic Sauce</label>
-          </div>
+          {pizza.extraOptions.map((option) => (
+            <div key={option._id} className={styles.option}>
+              <input
+                type="checkbox"
+                id={option.text}
+                name={option.text}
+                className={styles.checkbox}
+                onChange={(e) => handleChange(e, option)}
+              />
+              <label htmlFor={option.name}>{option.text}</label>
+            </div>
+          ))}
         </div>
         <div className={styles.add}>
-          <input type="number" defaultValue={1} className={styles.quantity} />
+          <input
+            onChange={(e) => setQuantity(e.target.value)}
+            type="number"
+            defaultValue={1}
+            className={styles.quantity}
+          />
           <button className={styles.button}>Add to Cart</button>
         </div>
       </div>
