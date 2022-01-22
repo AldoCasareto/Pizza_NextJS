@@ -10,7 +10,6 @@ import {
 import { useEffect, useState } from "react";
 
 const Cart = () => {
-  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const [open, setOpen] = useState(false);
   const amount = "2";
